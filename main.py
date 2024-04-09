@@ -50,6 +50,8 @@ class PocoOS:
                 Commands.display_file_contents(user_input[4:])
             elif user_input.startswith("touch "):
                 Commands.create_file(user_input[6:])
+            elif user_input == "poco":
+                Commands.redirect_to_website()
             elif user_input.startswith("writein "):
                 Commands.write_to_file(user_input[8:])
             elif user_input.startswith("mkdir "):

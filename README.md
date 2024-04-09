@@ -36,4 +36,4 @@ To use PocoOS, simply run the `main.py` script and follow the on-screen instruct
 
 1. Clone the repository:
 
-git clone https://github.com/awortuibenem/PocoOS.git
+git clone https://github.com/awortuibenem/pocoOS.git

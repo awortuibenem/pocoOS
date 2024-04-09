@@ -1,0 +1,22 @@
+You Can Still enter the "help" command to view this commands while working with the OS.
+Baisc Knowledge of Terminal Commands Can also help you here its just that i made them easier and more readabale i guess
+  
+cd <directory_name>: Change the current directory to the specified directory.
+ls: List the contents of the current directory.
+mkdir <directory_name>: Create a new directory with the specified name.
+pwd: Print the current working directory.
+cp <source_file> <destination>: Copy a file from the source path to the destination path.
+mv <source> <destination>: Move a file from the source path to the destination path.
+rm <filename_or_directory>: Remove a file or directory.
+cat <filename>: Display the contents of the specified file.
+touch <filename>: Create a new file with the specified name.
+writein <filename>: Write text to the specified file. (Press Ctrl + S to save and exit)
+download <url>: Download a file from the specified URL.
+help: Display a list of available commands and their descriptions.
+whoispoco: Display information about the developer.
+back: Navigate to the parent directory.
+..: Navigate up two levels in the directory hierarchy.
+rename <old_name> <new_name>: Rename a file or directory.
+zip <zip_filename> <file1> <file2> ...: Create a zip archive containing the specified files.
+unzip <zip_filename>: Extract files from the specified zip archive.
+view: Print the directory of the current file for viewing in a web browser.

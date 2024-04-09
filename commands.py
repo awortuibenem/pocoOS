@@ -2,7 +2,6 @@ import os
 import requests
 import shutil
 import zipfile
-import keyboard
 
 class Commands:
     @staticmethod
@@ -13,6 +12,10 @@ class Commands:
             print(f"File '{filename}' created successfully.")
         except FileNotFoundError:
             print("Error: Could not create file.")
+  
+    @staticmethod
+    def redirect_to_website():
+        print("Redirecting to the developer's official website (https://awortu.000webhostapp.com)")
 
     @staticmethod
     def change_directory(directory_name):

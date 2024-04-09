@@ -1,10 +1,10 @@
 # PocoOS
 
-PocoOS is a simple command-line operating system simulation developed by Awortu Ibenem.
+pocoOS is a simple command-line operating system simulation developed by Awortu Ibenem.
 
 ## Description
 
-PocoOS allows users to perform basic file management tasks and navigate directories through a command-line interface.
+pocoOS allows users to perform basic file management tasks and navigate directories through a command-line interface.
 
 ## Features
 
@@ -30,7 +30,7 @@ PocoOS allows users to perform basic file management tasks and navigate director
 
 ## Usage
 
-To use PocoOS, simply run the `main.py` script and follow the on-screen instructions.
+To use pocoOS, simply run the `main.py` script and follow the on-screen instructions.
 
 ## Installation
 

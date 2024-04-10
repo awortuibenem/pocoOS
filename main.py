@@ -1,10 +1,12 @@
 import os
+import hashlib
 from commands import Commands
 
 class PocoOS:
     def __init__(self):
         self.default_directories = ["Downloads", "Pictures", "Videos", "Audio", "Documents"]
         self.current_directory = os.getcwd()
+        self.logged_in_user = None
 
     def show_welcome_page(self):
         print("Welcome to PocoOS! Developed by Awortu Ibenem")
@@ -24,10 +26,66 @@ class PocoOS:
         else:
             print(f"Invalid directory name: {directory_name}")
 
-    def run(self):
-        self.show_welcome_page()
+    def login(self):
+        username = input("Enter username: ")
+        password = input("Enter password: ")
+        hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
+        if self.authenticate_user(username, hashed_password):
+            self.logged_in_user = username
+            print(f"Logged in as: {username}")
+        else:
+            print("Invalid username or password.")
+
+    def create_user(self):
+        username = input("Enter a new username: ")
+        password = input("Enter a new password: ")
+        confirm_password = input("Confirm password: ")
+
+        if password != confirm_password:
+            print("Passwords do not match. Please try again.")
+            return
+
+        if self.username_exists(username):
+            print("Username already exists. Please choose a different username.")
+            return
+
+        hashed_password = hashlib.sha256(password.encode()).hexdigest()
+
+        with open("user_database.txt", "a") as file:
+            file.write(f"{username}:{hashed_password}\n")
+        print("User account created successfully.")
+
+    def authenticate_user(self, username, hashed_password):
+        with open("user_database.txt", "r") as file:
+            for line in file:
+                stored_username, stored_password = line.strip().split(":")
+                if username == stored_username and hashed_password == stored_password:
+                    return True
+        return False
+
+    def username_exists(self, username):
+        with open("user_database.txt", "r") as file:
+            for line in file:
+                stored_username, _ = line.strip().split(":")
+                if username == stored_username:
+                    return True
+        return False
+
+    def run(self):
         while True:
+            choice = input("Type 'signup' to create an account or 'signin' to log in: ")
+            if choice.lower() == "signup":
+                self.create_user()
+            elif choice.lower() == "signin":
+                self.login()
+                if self.logged_in_user:
+                    self.show_welcome_page()
+                    break
+            else:
+                print("Invalid choice. Please try again.")
+
+        while self.logged_in_user:
             user_input = input("Enter a command or directory name (type 'exit' to quit): ")
             if user_input.lower() == "exit":
                 print("Exiting PocoOS.")
@@ -50,6 +108,8 @@ class PocoOS:
                 Commands.display_file_contents(user_input[4:])
             elif user_input.startswith("touch "):
                 Commands.create_file(user_input[6:])
+            elif user_input == "poco":
+                Commands.redirect_to_website()
             elif user_input.startswith("writein "):
                 Commands.write_to_file(user_input[8:])
             elif user_input.startswith("mkdir "):

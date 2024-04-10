@@ -4,15 +4,16 @@ def create_user_database():
     database_filename = "user_database.txt"
 
     users = {
-        "user1": "password1",
-        "user2": "password2",
+        "user1": ("password1", "user1@example.com"),
+        "user2": ("password2", "user2@example.com"),
     }
 
     try:
         with open(database_filename, "w") as file:
-            for username, password in users.items():
+            for username, data in users.items():
+                password, email = data
                 hashed_password = hashlib.sha256(password.encode()).hexdigest()
-                file.write(f"{username}:{hashed_password}\n")
+                file.write(f"{username}:{hashed_password}:{email}\n")
         
         print(f"User database created successfully: {database_filename}")
     
